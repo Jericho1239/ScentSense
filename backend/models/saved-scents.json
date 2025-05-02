@@ -1,0 +1,17 @@
+{
+  "savedScents": [
+    {
+      "productId": "254",
+      "userId": "6814e1e009ac131bd4424fcc",
+      "savedAt": "2025-05-02T15:30:05.935Z",
+      "productDetails": {
+        "productId": "254",
+        "name": "Adidas Dynamic Pulse",
+        "brand": "Adidas",
+        "image": "https://www.perfumes.com.ph/cdn/shop/files/adidas-dynamic-pulse-new-packaging-100ml-perfume-philippines-best-price-2.webp?v=1722435314&width=400",
+        "orderUrl": "https://www.perfumes.com.ph/products/adidas-dynamic-pulse-edt-perfume-for-men-100ml",
+        "Price": "895"
+      }
+    }
+  ]
+}

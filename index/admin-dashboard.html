@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScentSense Admin Dashboard</title>
+    <style>
+        .dashboard-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 2px solid #eee;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 1.1rem;
+        }
+        .stat-card p {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .orders-table th, .orders-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .orders-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+        .orders-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .logout-btn, .add-product-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .add-product-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+        .add-product-btn:hover {
+            background-color: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .close {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .save-scent-btn {
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .save-scent-btn:hover {
+            background-color: #5a6268;
+        }
+        .order-btn {
+            background-color: #ffc107;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .order-btn:hover {
+            background-color: #e0a800;
+        }
+        body {
+            background-color: #f4f6f8;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header-bar">
+            <h1>Admin Dashboard</h1>
+            <div class="header-buttons">
+                <button class="add-product-btn" onclick="openModal()">Add Product</button>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Orders</h3>
+                <p id="totalOrders">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <p id="totalRevenue">₱0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Users</h3>
+                <p id="activeUsers">0</p>
+            </div>
+            <div class="stat-card">
+                <button id="resetStats" class="reset-btn" onclick="resetOrderStats()">Reset All Orders</button>
+            </div>
+        </div>
+
+        <h2>Order Tracking</h2>
+        <table class="orders-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Total Orders</th>
+                    <th>Last Order Date</th>
+                    <th>Revenue</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                <tr>
+                    <td colspan="4">Loading order data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Product</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="addProductForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="id">ID (>253)</label>
+                    <input type="text" id="id" name="id" required>
+                </div>
+                <div class="form-group">
+                    <label for="item_group_id">Item Group</label>
+                    <select id="item_group_id" name="item_group_id" onchange="updateCategories()" required>
+                        <option value="">Select Group</option>
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                        <option value="unisex">Unisex</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <input type="text" id="Title" name="Title" required>
+                </div>
+                <div class="form-group">
+                    <label for="Description">Description</label>
+                    <textarea id="Description" name="Description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="Price">Price</label>
+                    <input type="number" id="Price" name="Price" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="Currency">Currency</label>
+                    <input type="text" id="Currency" name="Currency" value="Php" required>
+                </div>
+                <div class="form-group">
+                    <label for="Brand">Brand</label>
+                    <input type="text" id="Brand" name="Brand" required>
+                </div>
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    <select id="Category" name="Category" required>
+                        <option value="">Select Category</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Type">Type</label>
+                    <select id="Type" name="Type" required>
+                        <option value="">Select Type</option>
+                        <option value="Eau de Parfum">Eau de Parfum</option>
+                        <option value="Eau de Toilette">Eau de Toilette</option>
+                        <option value="Body Spray">Body Spray</option>
+                        <option value="Oil-based">Oil-based</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="URL">URL</label>
+                    <input type="url" id="URL" name="URL" required>
+                </div>
+                <div class="form-group">
+                    <label for="Size">Size</label>
+                    <input type="text" id="Size" name="Size" placeholder="How many ml" required>
+                </div>
+                <div class="form-group">
+                    <label for="Status">Status</label>
+                    <select id="Status" name="Status" required>
+                        <option value="">Select Status</option>
+                        <option value="Luxury">Luxury</option>
+                        <option value="Semi-expensive">Semi-expensive</option>
+                        <option value="Affordable">Affordable</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ImagePath">Image Path</label>
+                    <input type="text" id="ImagePath" name="ImagePath" placeholder="Image adress" required>
+                </div>
+                <button type="submit" class="submit-btn">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication only when not logged in
+        if (!localStorage.getItem('adminToken') && !sessionStorage.getItem('isAdmin')) {
+            window.location.href = 'Main.html';
+        }
+
+        // Fetch order statistics from localStorage
+        function fetchOrderStats() {
+            try {
+                const stats = JSON.parse(localStorage.getItem('orderStats') || '{}');
+                
+                // Update dashboard with stats
+                document.getElementById('totalOrders').textContent = stats.totalOrders || 0;
+                document.getElementById('totalRevenue').textContent = `₱${(stats.totalRevenue || 0).toFixed(2)}`;
+                document.getElementById('activeUsers').textContent = stats.activeUsers || 0;
+
+                // Populate orders table
+                const tableBody = document.getElementById('orderTableBody');
+                if (stats.productStats && Object.keys(stats.productStats).length > 0) {
+                    tableBody.innerHTML = Object.values(stats.productStats).map(product => `
+                        <tr>
+                            <td>${product.name}</td>
+                            <td>${product.orderCount}</td>
+                            <td>${new Date(product.lastOrderDate).toLocaleDateString()}</td>
+                            <td>₱${product.revenue.toFixed(2)}</td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tableBody.innerHTML = '<tr><td colspan="4">No orders yet</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+                document.getElementById('totalOrders').textContent = '0';
+                document.getElementById('totalRevenue').textContent = '₱0.00';
+                document.getElementById('activeUsers').textContent = '0';
+                document.getElementById('orderTableBody').innerHTML = '<tr><td colspan="4">No orders yet</td></tr>';
+            }
+        }
+
+        function resetOrderStats() {
+            if (confirm('Are you sure you want to reset all order statistics? This cannot be undone.')) {
+                localStorage.removeItem('orderStats');
+                // Refresh the page to show cleared stats
+                window.location.reload();
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('adminToken');
+            sessionStorage.removeItem('isAdmin');
+            window.location.href = 'Main.html';
+        }
+
+        const categories = {
+            men: [
+                "Woody Scents", "Spicy Scents", "Citrus Scents", "Leather Scents",
+                "Aquatic Scents", "Tobacco Scents", "Herbal Scents", "Gourmand Scents"
+            ],
+            women: [
+                "Fresh & Clean Scents", "Citrus Scents", "Sweet Fruity Scents",
+                "Sweet Floral Scents", "Woody Scents", "Fruity Floral Scents",
+                "Gourmand Scents", "Oriental Scents"
+            ],
+            unisex: [
+                "Fresh & Clean Scents", "Woody Scents", "Citrus Scents",
+                "Powdery Scents", "Herbal Scents"
+            ]
+        };
+
+        function updateCategories() {
+            const groupSelect = document.getElementById('item_group_id');
+            const categorySelect = document.getElementById('Category');
+            const selectedGroup = groupSelect.value;
+
+            // Clear existing options
+            categorySelect.innerHTML = '<option value="">Select Category</option>';
+
+            if (selectedGroup && categories[selectedGroup]) {
+                categories[selectedGroup].forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categorySelect.appendChild(option);
+                });
+            }
+        }
+
+        function openModal() {
+            document.getElementById('addProductModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('addProductModal').style.display = 'none';
+            document.getElementById('addProductForm').reset();
+        }
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const product = Object.fromEntries(formData.entries());
+            
+            // Format price as string with 2 decimal places
+            product.Price = parseFloat(product.Price).toFixed(2);
+
+            try {
+                const response = await fetch('/api/add-product', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(product)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Create the product card HTML
+                    const productCard = `
+                        <div class="product-card">
+                            <img src="${product.ImagePath}" alt="${product.Status}" />
+                            <p>${product.Brand}</p>
+                            <h4>${product.Title}</h4>
+                            <button class="add-to-cart-btn" data-product-id="${product.id}">Full Details</button>
+                        </div>
+                    `;
+
+                    // Determine which HTML file to update based on item_group_id
+                    const pageFile = `${product.item_group_id.toLowerCase()}.html`;
+                    
+                    // Find the appropriate section based on Type
+                    const response = await fetch(`/api/update-product-page`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            pageFile,
+                            productCard,
+                            productType: product.Type
+                        })
+                    });
+
+                    const updateResult = await response.json();
+                    if (updateResult.success) {
+                        alert('Product added successfully and page updated!');
+                    } else {
+                        alert('Product added to database but page update failed: ' + updateResult.message);
+                    }
+                    
+                    closeModal();
+                } else {
+                    alert('Failed to add product: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to add product. Please try again.');
+            }
+        }
+
+        // Initial load
+        fetchOrderStats();
+        // Refresh every 5 seconds to see new orders
+        setInterval(fetchOrderStats, 5000);
+        // Close modal when clicking outside the modal content
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('addProductModal');
+    const modalContent = document.querySelector('.modal-content');
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+    </script>
+</body>
+</html>

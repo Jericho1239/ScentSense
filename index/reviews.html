@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScentSense - Reviews</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/review-card.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="/loading.js"></script>
+  <script src="/script.js" defer></script>
+  <script src="/reviews.js" defer></script>
+  <script src="/shared-reviews.js" defer></script>
+</head>
+
+<body>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <a href="/Main.html">
+          <img src="/logo.png" alt="ScentSense" class="logo">
+        </a>
+        <h1>ScentSense</h1>
+      </div>
+      <nav class="header-nav">
+        <ul class="menu">
+          <li><a href="/Main.html" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+          <li class="menu-item-with-submenu">
+            <span class="menu-link has-submenu"><i class="fas fa-cart-shopping"></i><span>Shop</span></span>
+            <ul class="submenu">
+              <li><a href="/unisex.html"><i class="fas fa-user-friends"></i><span>Unisex</span></a></li>
+              <li><a href="/men.html"><i class="fas fa-male"></i><span>Men</span></a></li>
+              <li><a href="/women.html"><i class="fas fa-female"></i><span>Women</span></a></li>
+            </ul>
+          </li>
+          <li><a href="/reviews.html"><i class="fas fa-star"></i><span>Reviews</span></a></li>
+          <li><a href="/saved-scents.html" onclick="handleSavedScents()"><i class="fas fa-shopping-bag"></i><span>Save
+                Scents</span></a></li>
+          <li><a href="/about.html"><i class="fas fa-info-circle"></i><span>About Us</span></a></li>
+        </ul>
+      </nav>
+      <div class="account-container">
+        <div class="account-dropdown">
+          <button class="account-btn">
+            <i class="fas fa-user"></i>
+          </button>
+          <div class="dropdown-content" id="accountDropdownContent">
+            <button class="dropdown-btn sign-in-btn" onclick="showLoginRatingal()">Sign In</button>
+            <button class="dropdown-btn profile-btn" style="display:none;"
+              onclick="window.location.href='/customize_account.html'">Profile</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="reviews-container">
+      <h1>Customer Reviews</h1>
+      <button class="write-review-btn" id="writeReviewBtn">
+        <i class="fas fa-pen"></i> Write a Review
+      </button>
+
+      <!-- User Reviews -->
+      <div id="reviewsContainer"></div>
+
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal">
+      <div class="login-content">
+        <div class="login-left">
+          <h2><span class="gold-text">Log</span> In</h2>
+          <p class="welcome-text">Welcome back! Please enter your details</p>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <i class="fas fa-eye-slash login-toggle-password"></i>
+              </div>
+            </div>
+            <div class="form-options">
+              <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+            <div class="divider">
+            </div>
+            <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+          </form>
+        </div>
+        <div class="login-right">
+          <img src="/login.avif" alt="Perfume Banner">
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="signup-modal">
+      <div class="signup-content">
+        <div class="signup-left">
+          <h2><span class="gold-text">Sign</span> <span class="white-text">Up</span></h2>
+          <p class="welcome-text">Create your account!</p>
+          <form id="signupForm">
+            <div class="form-group">
+              <label for="signupName">Name</label>
+              <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signupName" name="signupName" placeholder="Enter your name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupEmail">Email</label>
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <div class="input-container">
+
+                <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a password"
+                  required>
+                <i class="fas fa-eye-slash signup-toggle-password"></i>
+              </div>
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+            <p class="login-text">Already have an account? <a href="#" class="login-link">Log in</a></p>
+          </form>
+        </div>
+        <div class="signup-right">
+          <img src="/login.avif" alt="Signup Banner">
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Modal -->
+<!-- Review Modal -->
+<div id="reviewModal">
+  <div class="modal-content">
+    <h3>Write a Review</h3>
+    <form id="reviewForm">
+      <div class="form-fields">
+        <label for="reviewProduct">Product</label>
+        <input type="text" id="reviewProduct" placeholder="Enter product name..." required>
+        
+        <label for="starRating">Rating</label>
+        <div class="star-rating" id="starRating">
+          <i class="far fa-star" data-rating="1"></i>
+          <i class="far fa-star" data-rating="2"></i>
+          <i class="far fa-star" data-rating="3"></i>
+          <i class="far fa-star" data-rating="4"></i>
+          <i class="far fa-star" data-rating="5"></i>
+        </div>
+        
+        <label for="reviewText">Review</label>
+        <textarea id="reviewText" placeholder="Share your experience with this product..." required></textarea>
+      </div>
+      <div class="button-group">
+        <button type="submit">Submit Review</button>
+        <button type="button" id="closeReviewModal">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section logo-section">
+          <img src="/logo.png" alt="ScentSense" class="footer-logo" />
+          <p class="tagline">Discover your signature scent</p>
+          <div class="social-links">
+            <a href="https://web.facebook.com/profile.php?id=61573286617313" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/scentsense_perfume" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:scentsenseperfume@gmail.com" aria-label="Email">
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="saved-scents.html">Saved Scents</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section categories">
+          <h3>Shop By</h3>
+          <ul>
+            <li><a href="shop.html?filter=men">Men's Fragrances</a></li>
+            <li><a href="shop.html?filter=women">Women's Fragrances</a></li>
+            <li><a href="shop.html?filter=unisex">Unisex Collections</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dagonoy St. Singalong Malate Manila</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+63 906 286 1439</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>scentsenseperfume@gmail.com</span>
+          </div>
+
+          <h3>Message Us</h3>
+          <form id="contactForm" class="message-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required />
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required />
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Message" required></textarea>
+            <button type="submit" id="sendBtn">Send</button>
+            <div id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright" style="text-align: center; padding: 1rem 0; background-color: #1a202c">
+      &copy; 2025 ScentSense. All Rights Reserved.
+    </div>
+  </div>
+
+</body>
+</html>

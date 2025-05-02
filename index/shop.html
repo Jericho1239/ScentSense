@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScentSense - Shop</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/script.js" defer></script>
+    <script src="/loading.js"></script>
+</head>
+
+<body>
+    <div class="main-content">
+        <header>
+            <div class="header-left">
+                <a href="/Main.html">
+                    <img src="/logo.png" alt="ScentSense" class="logo">
+                </a>
+                <h1>ScentSense</h1>
+            </div>
+            <nav class="header-nav">
+                <ul class="menu">
+                    <li><a href="/Main.html"><i class="fas fa-home"></i><span>home</span></a></li>
+                    <li class="menu-item-with-submenu">
+                        <span class="menu-link has-submenu"><i class="fas fa-cart-shopping"></i><span>shop</span></span>
+                        <ul class="submenu">
+                            <li><a href="/unisex.html"><i class="fas fa-user-friends"></i><span>unisex</span></a></li>
+                            <li><a href="/men.html"><i class="fas fa-male"></i><span>men</span></a></li>
+                            <li><a href="/women.html"><i class="fas fa-female"></i><span>women</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/reviews.html"><i class="fas fa-star"></i><span>reviews</span></a></li>
+                    <li><a href="/saved-scents.html" onclick="handleSavedScents()"><i
+                                class="fas fa-shopping-bag"></i><span>save scents</span></a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i><span>about us</span></a></li>
+
+                </ul>
+            </nav>
+            <div class="search-container">
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Search for scents..." />
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+                <div class="account-dropdown">
+                    <button class="account-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <button class="dropdown-btn sign-in-btn" onclick="showLoginModal()">Sign In</button>
+                        <button class="dropdown-btn" onclick="handleLogout()">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <h1>Women's</h1>
+
+        <main>
+            <section id="FS">
+                <h1>Fresh and Clean Scents</h1>
+
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="/Serge Lutens - La Dompteuse Encagée.png" alt="Luxury">
+                        <div class="product-info">
+                            <p>La Dompteuse Encagée</p>
+                            <h4>Serge Lutens</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Hacienderos - Wren Atelier.png" alt="Semi-Luxury">
+                        <div class="product-info">
+                            <p>Wren Atelier</p>
+                            <h4>Haciendero</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/OMNiA AMETHYST3 Inspired Perfume - ORIGINLAB .png" alt="Affordable">
+                        <div class="product-info">
+                            <p>Inspired Perfume - ORIGINLAB</p>
+                            <h4>OMNiA AMETHYST3</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="/Jolie Fleur – Tory Burch.png" alt="Luxury">
+                        <div class="product-info">
+                            <p>Tory Burch</p>
+                            <h4>Jolie Fleur</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Chance Eau Tendre – Chanel.png" alt="Semi-Luxury">
+                        <div class="product-info">
+                            <p>Chanel</p>
+                            <h4>Chance Eau Tendre</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Floral Mist – Aficionado.png" alt="Affordablee">
+                        <div class="product-info">
+                            <p>Aficionado</p>
+                            <h4>Floral Mist</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Eau de Toilette (EDT)</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="/J_adore – DIOR.png" alt="Luxury">
+                        <div class="product-info">
+                            <p>Dior</p>
+                            <h4>J'adore</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Light Blue – Dolce & Gabbana.png" alt="Semi-Luxury">
+                        <div class="product-info">
+                            <p>Dolce & Gabbana</p>
+                            <h4>Light Blue</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Fresh Blossom – Aficionado.png" alt="Affordable">
+                        <div class="product-info">
+                            <p>Aficionado</p>
+                            <h4>Fresh Blossom</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Body Spray / Body Mist</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="/Chance Eau Tendre Body Mist – Chanel.png" alt="Luxury">
+                        <div class="product-info">
+                            <p>Chanel</p>
+                            <h4>Chance Eau Tendere Body Mist</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Bombshell – Victoria’s Secret.png" alt="Semi-Luxury">
+                        <div class="product-info">
+                            <p>Victoria's Secret</p>
+                            <h4>Bombshell</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="/Body Mist – Pink Sugar.png" alt="Affordable">
+                        <div class="product-info">
+                            <p>Pink Sugar</p>
+                            <h4>Body Mist</h4>
+                            <button class="add-to-cart-btn">Save Scents</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="CC">
+                <div>
+                    <h1>Citrus Scents</h1>
+                    <h2>Oil-based Perfumes</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Mandarino di Amalfi – Tom Ford.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Tom Ford</p>
+                                <h4>Mandarino di Amalfi</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Eau Parfumée au Thé Vert – Bvlgari.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Bvlgari</p>
+                                <h4>Eau Parfumée au Thé Vert</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Fruit Fantasy - Young’s.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Young's</p>
+                                <h4>Fruit Fabatsy</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Parfum (EDP)</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Neroli Portofino – Tom Ford.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Tom Ford</p>
+                                <h4>Neroli Portofino</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Eau de Parfum – Chloé.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Chloé</p>
+                                <h4>Eau de Parfum</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Praddox Inspired Perfume - Florence.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Florence</p>
+                                <h4>Praddox Inspired Perfume</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Toilette (EDT) </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Lime Basil & Mandarin—Jo Malone.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Joe Malone</p>
+                                <h4>Lime Basil & Mandarin</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Avon Scent Essence Sparkly Citrus - Avon.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Avon</p>
+                                <h4>Avon Scent Essence Sparkly Citru</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Oh Sugar Pink - Penshoppe .png" alt="Affordable">
+                            <div class="product-info">
+                                <p> Penshoppe </p>
+                                <h4>Oh Sugar Pinks</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2> Body Spray / Body Mist </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Eau de Mandarine Ambrée – Hermès.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Hermès</p>
+                                <h4>Eau de Mandarine Ambrée</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Pomegranate Body Mist (Citrus) – Bath & Body Works.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Bath & Body Works</p>
+                                <h4>Body Mist (Citrus)</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Citrus Charm - Aficionado.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Aficionado</p>
+                                <h4>Citrus Charm</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="SFS">
+                <div>
+                    <h1>Sweet Fruity Scents </h1>
+                    <h2>Oil-based Perfumes</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Virgin Island Water – Creed.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Creed</p>
+                                <h4>Virgin Island Water</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Emerald Oil – Herbivore Botanicals.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Herbivore Botanicals</p>
+                                <h4>Emerald Oil</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Sweet Honesty – Avon.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Avon</p>
+                                <h4>Sweet Honesty</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Parfum (EDP)</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Mon Paris – Yves Saint Laurent.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Yves Saint Laurent</p>
+                                <h4>Mon Pari</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Flowerbomb – Viktor & Rolf.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Viktor & Rolf</p>
+                                <h4>Flowerbomb </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Far Away – Avon.png" alt="Affordable">
+                            <div class="product-info">
+                                <p> Avon </p>
+                                <h4> Far Away </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Toilette (EDT) </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Chance Eau Tendre – Chanel.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Chanel</p>
+                                <h4>Chance Eau Tendre</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Flora Eau de Toilette – Gucci.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p> Gucci </p>
+                                <h4>Flora Eau de Toilette </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Life Colour – Avon.png" alt="Affordable">
+                            <div class="product-info">
+                                <p> Avon </p>
+                                <h4>Life Colour</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2> Body Spray / Body Mist </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Orange Blossom - Jo Malone.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Jo Malone London</p>
+                                <h4>Orange Blossom</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/White Musk - The Body Shop.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>The Body Shop</p>
+                                <h4> White Musk Flora</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/White Musk - Body Fantasies.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Body Fantasies</p>
+                                <h4> White Musk </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="SFL">
+                <div>
+                    <h1>Sweet Floral Scents</h1>
+                    <h2>Oil-based Perfumes</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Rose de Grasse – Atelier Cologne.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Atelier Cologne</p>
+                                <h4>Rose de Grasse </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Fleur Musc – Narciso Rodriguez.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Narciso Rodriguez</p>
+                                <h4>Fleur Musc</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/PEONY BLUSH&SUED3 JM Inspired Perfume  - ORIGINLAB.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>ORIGINLAB</p>
+                                <h4>PEONY BLUSH&SUED3 JM Inspired Perfume</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Parfum (EDP)</h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Daisy Dream – Marc Jacobs.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Daisy Dream</p>
+                                <h4>Marc Jacobs</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Viva La Juicy – Juicy Couture.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Juicy Couture</p>
+                                <h4>Viva La Juicy </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Good GirlNight - Florence.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Florence</p>
+                                <h4>Good GirlNight</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Eau de Toilette (EDT) </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Miss Dior – Dior.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>Dior</p>
+                                <h4>Miss Dior</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Peony & Blush Suede – Jo Malone London.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Jo Malone London</p>
+                                <h4>Peony & Blush Sued</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Rich Amber - OXGEN.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>OXGEN</p>
+                                <h4>Rich Amber</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h2> Body Spray / Body Mist </h2>
+                    <div class="products">
+                        <div class="product-card">
+                            <img src="/Lavender & Musk – L_Occitane.png" alt="Luxury">
+                            <div class="product-info">
+                                <p>L'Occitane </p>
+                                <h4>Lavender & Musk</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Jasmine Noir – Bvlgari.png" alt="Semi-Luxury">
+                            <div class="product-info">
+                                <p>Bvlgari</p>
+                                <h4>Jasmine Noir</h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <img src="/Juicy Tropics Floral Punch - Penshoppe.png" alt="Affordable">
+                            <div class="product-info">
+                                <p>Penshoppe</p>
+                                <h4> Juicy Tropics Floral Punch </h4>
+                                <button class="add-to-cart-btn">Save Scents</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <h1>Men's</h1>
+
+        <section id="MWS">
+            <h1>Woody Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Bois d’Argent - Dior.png" alt="Luxury">
+                    <div class="product-info"></div>
+                    <p>Dior</p>
+                    <h4>Bois d'Argent</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Sandalwood - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Sandalwood</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Premiere Luxe Oud - Avon.png" alt="Affordable">
+                    <p>Avon</p>
+                    <h4>Premiere Luxe Oud</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Bois des Iles - Chanel.png" alt="Luxury">
+                    <p>Chanel</p>
+                    <h4>Bois des Iles</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Santal Supreme - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Santal Supreme</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../WOODY OUD - ORIGINLAB.png" alt="Affordable">
+                    <p>ORIGINLAB.PH</p>
+                    <h4>WOODY OUD</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Encre Noire - Lalique.png" alt="Luxury">
+                    <p>Lalique</p>
+                    <h4>Encre Noire</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Vetiver Pamplemousse - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Vetiver Pamplemousse</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../CELADON - Zen Zest.png" alt="Affordable">
+                    <p>Zen Zest</p>
+                    <h4>CELADON</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Oud & Bergamot - Jo Malone.png" alt="Luxury">
+                    <p>Jo Malone</p>
+                    <h4>Oud & Bergamot</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Woodlands - Bath & Body Works.png" alt="Semi-Luxury">
+                    <p>Bath & Body Works</p>
+                    <h4>Woodlands</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Memo Work_Play Woody - Memo Fashion.png" alt="Affordable">
+                    <p>Memo Fashion</p>
+                    <h4>Memo Work/Play Woody</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="MSS">
+            <h1>Spicy Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Spicebomb Extreme - Viktor & Rolf.png" alt="Luxury">
+                    <p>Viktor & Rolf</p>
+                    <h4>Spicebomb Extreme</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Spicebomb Exrteme - Symmetry Lab Parfums.png" alt="Semi-Luxury">
+                    <p>Symmetry Lab Parfums</p>
+                    <h4>Spicebomb Extreme</h4> <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Stronger Intense - Fragrancelab.png" alt="Affordable">
+                    <p>Fragrancelab</p>
+                    <h4>Stronger Intense</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Ambre Nuit - Dior.png" alt="Luxury">
+                    <p>Dior</p>
+                    <h4>Ambre Nuit</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Moroccan Dream (LV DUPE) -  Dubai Shop Baliuag .png" alt="Semi-Luxury">
+                    <p>Dubai Shop Baliuag</p>
+                    <h4>Moroccan Dream (LV DUPE)</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Spicebomb Extreme Inspired - KellaStefan.png" alt="Affordable">
+                    <p>KellaStefan</p>
+                    <h4>Spicebomb Extreme Inspired</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Poivre Samarcande - Hermès.png" alt="Luxury">
+                    <p>Hermès</p>
+                    <h4>Poivre Samarcande</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Carolina Herrera Bad boy (Mini Bottle) - Nosewise Central.png" alt="Semi-Luxury">
+                    <p>Nosewise Central</p>
+                    <h4>Carolina Herrera Bad boy (Mini Bottle)</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../DG THE ONE - Eaugenelao8.png" alt="Affordable">
+                    <p>Eaugenelao8</p>
+                    <h4>DG THE ONE</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Spice & Wood _ Creed.png" alt="Luxury">
+                    <p>Creed</p>
+                    <h4>Spice & Wood</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Mystic Spice - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Mystic Spice</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Spice Guy - Natasha.png" alt="Affordable">
+                    <p>Natasha</p>
+                    <h4>Spice Guy</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="MCS">
+
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cologne Indelebile - Frederic Malle.png" alt="Luxury">
+                    <p>Frederic Malle</p>
+                    <h4>Cologne Indelebile</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Lemon Lazuli - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Lemon Lazuli</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../￼ECL@T POUR HOMME for him - ORIGINLAB.png" alt="Affordable">
+                    <p>ORIGINLAB</p>
+                    <h4>￼ECL@T POUR HOMME for him</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cedrat Enivrant - Atelier Cologne.png" alt="Luxury">
+                    <p>Atelier Cologne</p>
+                    <h4>Cedrat Enivrant</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Citrus Supreme - Symmetry Lab.png" alt="Semi-Luxury">
+                    <p>Symmetry Lab</p>
+                    <h4>Citrus Supreme</h4> <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../F16 Crisp Citrus - Aficionado.png" alt="Affordable">
+                    <p>Aficionado</p>
+                    <h4>F16 Crisp Citrus</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Eau Sauvage - Dior.png" alt="Luxury">
+                    <p>Dior</p>
+                    <h4>Eau Sauvage</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Lemon Pie - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Lemon Pie</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Triumph - Luxe Fragrances.png" alt="Affordable">
+                    <p>Luxe Fragrances</p>
+                    <h4>Triumph</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Bergamote Soleil - Atelier Cologne.png" alt="Luxury">
+                    <p>Atelier Cologne</p>
+                    <h4>Bergamote Soleil</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Lemon Burst - Avon.png" alt="Semi-Luxury">
+                    <p>Avon</p>
+                    <h4>Lemon Burst</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Fresh Lemon Sugar - Body Fantasies.png" alt="Affordable">
+                    <p>Body Fantasies</p>
+                    <h4>Fresh Lemon Sugar</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="MLS">
+            <h1>Leather Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cuir de Russie - Chanel.png" alt="Luxury">
+                    <p>Chanel</p>
+                    <h4>Cuir de Russie</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Oud Vibrant Leather - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Oud Vibrant Leather</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../TUSCAN LeATHER - ORIGINLAB.png" alt="Affordable">
+                    <p>ORIGINLAB</p>
+                    <h4>TUSCAN LEATHER</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cuir de Lancôme - Lancôme.png" alt="Luxury">
+                    <p>Lancôme</p>
+                    <h4>Cuir de Lancôme</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Versace Eros - Aficionado.png" alt="Semi-Luxury">
+                    <p>Aficionado</p>
+                    <h4>Versace Eros</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Vibrant Leather (Mini Bottle) - Zara.png" alt="Affordable">
+                    <p>Zara</p>
+                    <h4>Vibrant Leather (Mini Bottle)</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cuir d’Ange - Hermès.png" alt="Luxury">
+                    <p>Hermès</p>
+                    <h4>Cuir d’Ange</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Intense Vibrant Leather - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Intense Vibrant Leather</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Black Essential Leather - Avon.png" alt="Affordable">
+                    <p>Avon</p>
+                    <h4>Black Essential Leather</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Cuir Intense - Guerlain.png" alt="Luxury">
+                    <p>Guerlain</p>
+                    <h4>Cuir Intense</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Graphite - Bath & Body Works.png" alt="Semi-Luxury">
+                    <p>Bath & Body Works</p>
+                    <h4>Graphite</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+        <section id="MAF">
+            <h1>Aquatic / Fresh Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Acqua di Gio Profumo - Giorgio Armani.png" alt="Luxury">
+                    <p>Giorgio Armani</p>
+                    <h4>Acqua di Gio Profumo</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Aquatic Mind- Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Aquatic Mind</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Pure Ocean - Avon.png" alt="Affordable">
+                    <p>Avon</p>
+                    <h4>Pure Ocean</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Maison Margiela Sailing Day - Maison Margiela.png" alt="Luxury">
+                    <p>Maison Margiela</p>
+                    <h4>Maison Margiela Sailing Day</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Sel d’Azur - Yves Rocher.png" alt="Semi-Luxury">
+                    <p>Yves Rocher</p>
+                    <h4>Sel d’Azur</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Aqua Di Gio - Scent Society.png" alt="Affordable">
+                    <p>Scent Society</p>
+                    <h4>Aqua Di Gio</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Issey Miyake L’Eau d’Issey Pour Homme - Issey Miyake.png" alt="Luxury">
+                    <p>Issey Miyake</p>
+                    <h4>Issey Miyake L’Eau d’Issey Pour Homme</h4> <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Exploration - Avon.png" alt="Semi-Luxury">
+                    <p>Avon</p>
+                    <h4>Exploration</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Aquatic Mint Aqua Blue - OXYGEN .png" alt="Affordable">
+                    <p>OXYGEN</p>
+                    <h4>Aquatic Mint Aqua Blue</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Maison Margiela Beach Walk - Maison Margiela.png" alt="Luxury">
+                    <p>Maison Margiela</p>
+                    <h4>Maison Margiela Beach Walk</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Aqua Spice - Aficionado.png" alt="Semi-Luxury">
+                    <p>Aficionado</p>
+                    <h4>Aqua Spice</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Into the Blue - MEMO.png" alt="Affordable">
+                    <p>MEMO</p>
+                    <h4>Into the Blue</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="MTS">
+            <h1>Tobacco Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Herod - Parfums de Marly.png" alt="Luxury">
+                    <p>Parfums de Marly</p>
+                    <h4>Herod</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Tobacco Sublime - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Tobacco Sublime</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../COD Tobacco Vanille - ORIGINLAB .png" alt="Affordable">
+                    <p>ORIGINLAB</p>
+                    <h4>COD Tobacco Vanille</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Ambre Tabac - Daniel Josie.png" alt="Luxury">
+                    <p>Daniel Josie</p>
+                    <h4>Ambre Tabac</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../TOBACCO COLLECTION INTENSE DARK EXCLUSIVE - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>TOBACCO COLLECTION INTENSE DARK EXCLUSIVE</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Red Tobacco Mancera Inspired Perfume - Superdose .png" alt="Affordable">
+                    <p>Superdose</p>
+                    <h4>Red Tobacco Mancera Inspired Perfume</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Tobacco Leather - Memo Paris.png" alt="Luxury">
+                    <p>Memo Paris</p>
+                    <h4>Tobacco Leather</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Tobacco Unexpected Fresh Spicy - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Tobacco Unexpected Fresh Spicy</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Naxos Tobacco Honey Inspired Perfume - Kella Stefan.png" alt="Affordable">
+                    <p>Kella Stefan</p>
+                    <h4>Naxos Tobacco Honey Inspired Perfume</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Tobacco Vanille - Tom Ford.png" alt="Luxury">
+                    <p>Tom Ford</p>
+                    <h4>Tobacco Vanille</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Tobacco Rich_Warm_Addictive- Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Tobacco Rich/Warm/Addictive</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+        <section id="MHF">
+            <h1>Herbal / Green Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Scent of Peace for Him - Bond No. 9.png" alt="Luxury">
+                    <p>Bond No. 9</p>
+                    <h4>Scent of Peace for Him</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Green Savage - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Green Savage</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../GREEN IRISH TWEED Inspired Perfume - ORIGINLAB .png" alt="Affordable">
+                    <p>ORIGINLAB</p>
+                    <h4>GREEN IRISH TWEED Inspired Perfume</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Sauvage Elixir - Dior.png" alt="Luxury">
+                    <p>Dior</p>
+                    <h4>Sauvage Elixir</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Eternity - Calvin Klein.png" alt="Semi-Luxury">
+                    <p>Calvin Klein</p>
+                    <h4>Eternity</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../WHITE LAUNDRY Inspired Perfume - Scent Swatch.png" alt="Affordable">
+                    <p>Scent Swatch</p>
+                    <h4>WHITE LAUNDRY Inspired Perfume</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Eau de Guerlain - Guerlain.png" alt="Luxury">
+                    <p>Guerlain</p>
+                    <h4>Eau de Guerlain</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Explorer - Regatta .png" alt="Semi-Luxury">
+                    <p>Regatta</p>
+                    <h4>Explorer</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Fresh Green - Aficionado.png" alt="Affordable">
+                    <p>Aficionado</p>
+                    <h4>Fresh Green</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Vetiver Tonka - Hermès.png" alt="Luxury">
+                    <p>Hermès</p>
+                    <h4>Vetiver Tonka</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+        <section id="MGS">
+            <h1>Gourmand Scents</h1>
+            <h2>Oil-based Perfumes</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Tonka Imperiale - Guerlain.png" alt="Luxury">
+                    <p>Guerlain</p>
+                    <h4>Tonka Imperiale</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Gourmand Leather - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Gourmand Leather</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../VANILLA & ANISE - ORIGINLAB .png" alt="Affordable">
+                    <p>ORIGINLAB</p>
+                    <h4>VANILLA & ANISE</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Parfum (EDP)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Ambre Nuit - Dior.png" alt="Luxury">
+                    <p>Dior</p>
+                    <h4>Ambre Nuit</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Rose Gourmand - Zara.png" alt="Semi-Luxury">
+                    <p>Zara</p>
+                    <h4>Rose Gourmand</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Sweet Honesty Bloom - Avon.png" alt="Affordable">
+                    <p>Avon</p>
+                    <h4>Sweet Honesty Bloom</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Eau de Toilette (EDT)</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Tonka Cola - Mancera.png" alt="Luxury">
+                    <p>Mancera</p>
+                    <h4>Tonka Cola</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Eau des Baux - L'Occitane.png" alt="Semi-Luxury">
+                    <p>L'Occitane</p>
+                    <h4>Eau des Baux</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+            <h2>Body Spray / Body Mist</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="../Angel Muse - Mugler.png" alt="Luxury">
+                    <p>Mugler</p>
+                    <h4>Angel Muse</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../After Dark - Bath & Body Works.png" alt="Semi-Luxury">
+                    <p>Bath & Body Works</p>
+                    <h4>After Dark</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+                <div class="product-card">
+                    <img src="../Dark Temptation - Axe.png" alt="Affordable">
+                    <p>Axe</p>
+                    <h4>Dark Temptation</h4>
+                    <button class="add-to-cart-btn">Save Scents</button>
+                </div>
+            </div>
+        </section>
+        <section id="UFCS">
+            <h1> UNISEX </h1>
+            <section id="UFCS">
+                <h1> Fresh & Clean Scents </h1>
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Aqua Universalis Forte - Maison Francis Kurkdjian.png" alt="Luxury">
+                        <p>Maison Francis Kurkdjian </p>
+                        <h4> Aqua Universalis</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Aqua Kiss - Victoria's Secret.png" alt="Semi-Luxury">
+                        <p>Victoria's Secret </p>
+                        <h4>Aqua Kiss </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Cotton Blossom - Bath & Body Works.png" alt="Affordable">
+                        <p>Bath & Body Works </p>
+                        <h4> Cotton Blossom </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Blanche - Byredo.png" alt="Luxury">
+                        <p> Byredo</p>
+                        <h4> Blanche</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Clean Reserve Skin - Clean.png" alt="Semi-Luxury">
+                        <p> Clean</p>
+                        <h4> Clean Reserve Skin </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../BYR3D0 BLANCHE Inspired Perfume - ORIGINLAB.png" alt="Affordable">
+                        <p>ORIGINLAB </p>
+                        <h4> BYR3D0 BLANCHE Inspired Perfume</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Toilette (EDT) </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Aqua Allegoria Herba Fresca - Guerlain.png" alt="Luxury">
+                        <p> Guerlain</p>
+                        <h4>Aqua Allegoria Herba Fresca </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Bergamot & White Musk - the Lab.png" alt="Semi-Luxury">
+                        <p> the Lab</p>
+                        <h4> Bergamot & White Musk</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../CK One Gold - Perfume Museum.png" alt="Affordable">
+                        <p> Perfume Museum</p>
+                        <h4> CK One Gold (Decant) </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2> Body Spray / Body Mist </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Eau de Magnolia - Frederic Malle.png" alt="Luxury">
+                        <p> Frederic Malle</p>
+                        <h4> Eau de Magnolia </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Clean Skin - Clean.png" alt="Semi-Luxury">
+                        <p>Clean </p>
+                        <h4>Clean Skin </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../If You Musk - Bath & Body Work.png" alt="Affordable">
+                        <p> Bath & Body Works</p>
+                        <h4>If You Musk </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+            </section>
+            <section id="UWE">
+                <h1> Woody and Earthy Scents </h1>
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+                    <div class="product-card">
+                        <img src="../Tam Dao - Diptyque.png" alt="Luxury">
+                        <p>Diptyque </p>
+                        <h4> Tam Dao</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Wood Sage & Sea Salt – Jo Malone London.png" alt="Semi-Luxury">
+                        <p>Jo Malone London </p>
+                        <h4> Woodsage & Sea Salt </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Sage Cedarwood Essence - Bath & Body Works.png" alt="Affordable">
+                        <p>Bath & Body Works </p>
+                        <h4> Sage Cedarwood Essence</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Oud Wood - Tom Ford.png" alt="Luxury">
+                        <p> Tom Ford</p>
+                        <h4>Oud Wood </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Black Pepper & Cedarwood - Zara.png" alt="Semi-Luxury">
+                        <p>Zara </p>
+                        <h4> Black Pepper & Cedarwood </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Poison Woody - Haven Beauty.png" alt="Affordable">
+                        <p> Haven Beauty </p>
+                        <h4> Poison Woody </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Toilette (EDT) </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Terre d'Hermès - Hermès.png" alt="Luxury">
+                        <p> Hermes</p>
+                        <h4> Terre d’Hermes</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Woody Sandalwood - Dossier.png" alt="Semi-Luxury">
+                        <p>Dossier </p>
+                        <h4> Woody Sandalwood</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Forest Dew - Avon.png" alt="Affordable">
+                        <p> Avon </p>
+                        <h4> Forest Dew </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2> Body Spray / Body Mist </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Bois d’Hiver - Ex Nihilo.png" alt="Luxury">
+                        <p> Ex Nihilo</p>
+                        <h4>Bois d’Hiver </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Accord No. 3 Woody Fresh - Zara.png" alt="Semi-Luxury">
+                        <p>Zara </p>
+                        <h4>Accord No. 3 Woody Fresh</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Twilight Woods t - Bath & Body Works.png" alt="Affordable">
+                        <p>Bath & Body Works </p>
+                        <h4> Twilight Woods </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+            </section>
+            <section id="UCZ">
+                <h1> Cirus & Zesty Scents </h1>
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Bergamote 22 - Le Labo.png" alt="Luxury">
+                        <p> Le Labo</p>
+                        <h4> Bergamote 22 </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Orange Blossom - Jo Malone.png" alt="Semi-Luxury">
+                        <p> Jo Malone </p>
+                        <h4> Orange Blossom </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../De Levante 198 - Levante Perfume Shop.png" alt="Affordable">
+                        <p>Levante Perfume Shop </p>
+                        <h4> De Levante 198</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Citrus Bigarrade - Creed.png" alt="Luxury">
+                        <p> Creed</p>
+                        <h4> Citrus Bigarrade</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Citrus Meze - Zara.png" alt="Semi-Luxury">
+                        <p> Zara</p>
+                        <h4> Citrus Meze</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../01 GREY - Scent Swatch.png" alt="Affordable">
+                        <p> Scent Swatch</p>
+                        <h4> 01 GREY</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Toilette (EDT) </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Eau de Cologne - Chanel.png" alt="Luxury">
+                        <p>Chanel </p>
+                        <h4> Eau de Cologne</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Orange Zest - Zara.png" alt="Semi-Luxury">
+                        <p>Zara </p>
+                        <h4> Orange Zest</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Sparkly Citrus - Avon.png" alt="Afffordable">
+                        <p> Avon</p>
+                        <h4>Sparkly Citrus </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2> Body Spray / Body Mist </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Acqua di Parma Colonia - Acqua di Parma.png" alt="Luxury">
+                        <p> Acqua di Parma </p>
+                        <h4>Acqua di Parma Colonia </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Hibiscus - Zara.png" alt="Semi-Luxury">
+                        <p> Zara</p>
+                        <h4> Hibiscus</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Sparkling Pink Grapefruit - Body Fantasies.png" alt="Affordable">
+                        <p>Body Fantasies </p>
+                        <h4>Sparkling Pink Grapefruit </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+            </section>
+            <section id="UPS">
+                <h1> Powdery & Soft Scents </h1>
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Iris Poudre - Frederic Malle.png" alt="Luxury">
+                        <p> Frederic Malle</p>
+                        <h4> Iris Poudre</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../White Musk - The Body Shop.png" alt="Semi-Luxury">
+                        <p>The Body Shop </p>
+                        <h4> White Musk</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../L'Artisan Parfumeur Voleur de Roses - Perfume Museum.png" alt="Affordable">
+                        <p> Perfume Museum </p>
+                        <h4> L'Artisan Parfumeur Drôle de Rose 2ML </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Love, Don't Be Shy - Kilian.png" alt="Luxury">
+                        <p>Kilian </p>
+                        <h4> Love, Don't Be Shy</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Cashmere Glow - Bath & Body Works.png" alt="Semi-Luxury">
+                        <p>Bath & Body Works </p>
+                        <h4> Cashmere Glow</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Outspoken Fresh - Avon.png" alt="Affordable">
+                        <p> Avon </p>
+                        <h4> Outspoken Fresh </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Toilette (EDT) </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Infusion d'Iris - Prada.png" alt="Luxury">
+                        <p> Prada</p>
+                        <h4> Infusion d'Iris</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Soft Musk - Avon.png" alt="Semi-Luxury">
+                        <p> Avon </p>
+                        <h4>Soft Musk </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Cashmere Mist - Donna Karan.png" alt="Affordable">
+                        <p>Donna Kara</p>
+                        <h4> Cashmere Mist </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2> Body Spray / Body Mist </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Fleur de Peau - Diptyque.png" alt="Luxury">
+                        <p> Diptyque </p>
+                        <h4> Fleur de Peau</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Warm Cotton - Clean.png" alt="Semi-Luxury">
+                        <p> Clean</p>
+                        <h4>Warm Cotton </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Powder Perfume - Brilliant Health.png" alt="Affordable">
+                        <p> Brilliant Health</p>
+                        <h4> Powder Perfume</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+            </section>
+            <section id="UHG">
+                <h1> Herbal & Green Scents </h1>
+                <h2>Oil-based Perfumes</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Eau de Lierre - Diptyque.png" alt="Luxury">
+                        <p> Diptyque</p>
+                        <h4> Eau de Lierre</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Nasturtium & Clover - Jo Malone.png" alt="Semi-Luxury">
+                        <p>Jo Malone</p>
+                        <h4>Nasturtium & Clover </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Byredo Bal d'Afrique.png" alt="Affordable">
+                        <p> Parfum Aromatics Co.</p>
+                        <h4> Byredo Bal d'Afrique </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Parfum (EDP)</h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Vetiver Extraordinaire - Frederic Malle.png" alt="Luxury">
+                        <p>Frederic Malle </p>
+                        <h4> Vetiver Extraordinaire</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Hermès Eau de basilic -  Nosewise Central.png" alt="Semi-Luxury">
+                        <p>Nosewise Central </p>
+                        <h4> Hermès Eau de basilic 15ml</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../TSC Philosykos Inspired Perfume - The Scents Co. by Love, Chloe.png"
+                            alt="Affordable">
+                        <p> The Scents Co. by Love, Chloe</p>
+                        <h4> TSC Philosykos Inspired Perfume </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2>Eau de Toilette (EDT) </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Un Jardin sur le Nil - Hermès.png" alt="Luxury">
+                        <p> Hermès</p>
+                        <h4> Un Jardin sur le Nil</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Basil & Neroli - Jo Malone.png" alt="Semi-Luxury">
+                        <p> Jo Malone</p>
+                        <h4> Basil & Neroli</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Matcha Meditation (Maison Margiela) - The Good Wick.png" alt="Affordable">
+                        <p> The Good Wick</p>
+                        <h4> Matcha Meditation (Maison Margiela)</h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+                <h2> Body Spray / Body Mist </h2>
+                <div class="products">
+
+                    <div class="product-card">
+                        <img src="../Eau de Campagne - Sisley.png" alt="Luxury">
+                        <p> Sisley</p>
+                        <h4>Eau de Campagne </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../Sacred Green Forest- Zara.png" alt="Semi-Luxury">
+                        <p>Zara </p>
+                        <h4>Sacred Green Forest </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="../CK 1 (F1) - Aficionado.png" alt="Affordable">
+                        <p>Aficionado </p>
+                        <h4> CK 1 (F1) </h4>
+                        <button class="add-to-cart-btn">Save Scents</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <footer class="footer">
+                <div class="footer-container">
+                    <div class="footer-section logo-section">
+                        <img src="/logo.png" alt="ScentSense" class="footer-logo">
+                        <p class="tagline">Discover your signature scent</p>
+                        <div class="social-links">
+                            <a href="https://web.facebook.com/profile.php?id=61573286617313" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/scentsense_perfume" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="mailto:scentsenseperfume@gmail.com" aria-label="Email">
+                                <i class="fab fa-google"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-section links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="main.html">Home</a></li>
+                            <li><a href="reviews.html">Reviews</a></li>
+                            <li><a href="saved-scents.html">Saved Scents</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section categories">
+                        <h3>Shop By</h3>
+                        <ul>
+                            <li><a href="shop.html?filter=men">Men's Fragrances</a></li>
+                            <li><a href="shop.html?filter=women">Women's Fragrances</a></li>
+                            <li><a href="shop.html?filter=unisex">Unisex Collections</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section contact">
+                        <h3>Contact Us</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dagonoy St. Singalong Malate Manila</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+63 906 286 1439</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>scentsenseperfume@gmail.com</span>
+                        </div>
+
+                        <h3>Message Us</h3>
+                        <form id="contactForm" class="message-form">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Name" required>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Message" required></textarea>
+                            <button type="submit" id="sendBtn">Send</button>
+                            <div id="formStatus"></div>
+                        </form>
+                    </div>
+                </div>
+            </footer>
+
+            <div class="copyright" style="text-align: center; padding: 1rem 0; background-color: #1a202c;">
+                &copy; 2025 ScentSense. All Rights Reserved.
+            </div>
+    </div>
+</body>
+
+</html>

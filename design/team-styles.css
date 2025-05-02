@@ -1,0 +1,95 @@
+.team-member {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 15px;
+  flex: 1;
+  min-width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid var(--gold);
+}
+
+.team-member h3 {
+  color: var(--gold);
+  margin: 10px 0;
+  font-size: 1.4rem;
+}
+
+.team-member .role {
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  margin: 5px 0 15px;
+}
+
+.team-member .contact,
+.team-member .course,
+.team-member .school,
+.team-member .email {
+  color: var(--white);
+  margin: 8px 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.team-member .email a {
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.team-member .email a:hover {
+  color: var(--gold);
+}
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons a {
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--gold-light);
+}
+
+.meet-the-team {
+  padding: 40px 20px;
+  background-color: rgba(30, 35, 48, 0.8);
+  margin: 40px 0;
+}
+
+.team-title {
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .team-member {
+    min-width: 250px;
+  }
+}

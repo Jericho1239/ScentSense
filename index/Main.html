@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScentSense - Home</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/script.js" defer></script>
+    <script src="/loading.js"></script>
+    <script src="/featured.js" defer></script>
+    <script src="/shared-reviews.js" defer></script>
+    <script src="/main-reviews.js" defer></script>
+    <script src="/order-tracking.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init("qOivU1JDmGtB6D-Ik"); 
+    </script>
+    <style>
+        /* Admin Login Modal Styles */
+        .admin-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-to-user-login {
+            color: #4a90e2;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .back-to-user-login:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header>
+            <div class="header-left">
+                <a href="/Main.html">
+                    <img src="/logo.png" alt="ScentSense" class="logo">
+                </a>
+                <h1>ScentSense</h1>
+            </div>
+            <nav class="header-nav">
+                <ul class="menu">
+                    <li><a href="/Main.html" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+                    <li class="menu-item-with-submenu">
+                        <span class="menu-link has-submenu"><i class="fas fa-cart-shopping"></i><span>Shop</span></span>
+                        <ul class="submenu">
+                            <li><a href="/unisex.html"><i class="fas fa-user-friends"></i><span>Unisex</span></a></li>
+                            <li><a href="/men.html"><i class="fas fa-male"></i><span>Men</span></a></li>
+                            <li><a href="/women.html"><i class="fas fa-female"></i><span>Women</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/reviews.html"><i class="fas fa-star"></i><span>Reviews</span></a></li>
+                    <li><a href="/saved-scents.html" onclick="handleSavedScents()"><i
+                                class="fas fa-shopping-bag"></i><span>Save Scents</span></a></li>
+                    <li><a href="/about.html"><i class="fas fa-info-circle"></i><span>About Us</span></a></li>
+                </ul>
+            </nav>
+            <div class="account-container">
+                <div class="account-dropdown">
+                    <button class="account-btn">
+                        <i class="fas fa-user"></i>
+                    </button>
+                    <div class="dropdown-content" id="accountDropdownContent">
+                        <button class="dropdown-btn sign-in-btn" onclick="showLoginModal()">Sign In</button>
+                        <button class="dropdown-btn profile-btn" style="display:none;"
+                            onclick="window.location.href='/customize_account.html'">Profile</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Login Modal -->
+    <div class="login-modal">
+        <div class="login-content">
+          <div class="login-left">
+            <h2><span class="gold-text">Log</span> In</h2>
+            <p class="welcome-text">Welcome back! Please enter your details</p>
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-container">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-container">
+                  <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                  <i class="fas fa-eye-slash login-toggle-password"></i>
+                </div>
+              </div>
+              <div class="form-options">
+                <div class="remember-me">
+                  <input type="checkbox" id="remember" name="remember">
+                  <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password" onclick="showAdminLogin()">Log in as Admin</a>
+              </div>
+              <button type="submit" class="login-btn">Log in</button>
+              <div class="divider">
+              </div>
+              <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+            </form>
+          </div>
+          <div class="login-right">
+            <img src="/login.avif" alt="Perfume Banner">
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Login Modal -->
+      <div class="login-modal admin-login-modal" style="display: none;">
+        <div class="login-content">
+          <div class="login-left">
+            <h2><span class="gold-text">Admin</span> Login</h2>
+            <p class="welcome-text">Welcome back, Administrator!</p>
+            <form id="adminLoginForm" class="login-form">
+              <div class="form-group">
+                <label for="adminUsername">Username</label>
+                <div class="input-container">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="adminUsername" name="adminUsername" placeholder="Enter admin username" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="adminPassword">Password</label>
+                <div class="input-container">
+                  <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter admin password" required>
+                  <i class="fas fa-eye-slash admin-toggle-password"></i>
+                </div>
+              </div>
+              <div class="form-options">
+                <a href="#" class="back-to-user-login">Back to User Login</a>
+              </div>
+              <button type="submit" class="login-btn">Continue</button>
+            </form>
+          </div>
+          <div class="login-right">
+            <img src="/login.avif" alt="Admin Login Banner">
+          </div>
+        </div>
+      </div>
+
+      <!-- Sign Up Modal -->
+      <div class="signup-modal">
+        <div class="signup-content">
+          <div class="signup-left">
+            <h2><span class="gold-text">Sign</span> <span class="white-text">Up</span></h2>
+            <p class="welcome-text">Create your account!</p>
+            <form id="signupForm">
+              <div class="form-group">
+                <label for="signupName">Name</label>
+                <div class="input-container">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="signupName" name="signupName" placeholder="Enter your name" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <div class="input-container">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <div class="input-container">
+  
+                  <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a password"
+                    required>
+                  <i class="fas fa-eye-slash signup-toggle-password"></i>
+                </div>
+              </div>
+              <button type="submit" class="signup-btn">Sign Up</button>
+              <p class="login-text">Already have an account? <a href="#" class="login-link">Log in</a></p>
+            </form>
+          </div>
+          <div class="signup-right">
+            <img src="/login.avif" alt="Signup Banner">
+          </div>
+        </div>
+      </div>
+      
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <video autoplay muted loop class="video-background">
+                <source src="/background.mp4" type="video/mp4">
+            </video>
+            <div class="featured-slider">
+                <div class="slides-container">
+                    <div class="featured-slide active">
+                        <div class="featured-content">
+                            <div class="featured-text">
+                                <span class="exclusive-tag">Recommended</span>
+                                <h2> Gingham</h2>
+                                <p> Bath & Body Works</p>
+                                <div class="price">
+                                    <span>Starting At</span>
+                                    <span class="amount">₱1,500.00</span>
+                                </div>
+                                <div class="button-group">
+                                    <button class="order-btn" onclick="window.location.href='unisex.html#LLLL';">See Full Details</button>
+                                </div>
+                            </div>
+                            <div class="featured-image">
+                                <img src="Gingham - Bath & Bodyworks .png" alt="Semi-expensive">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-slide">
+                        <div class="featured-content">
+                            <div class="featured-text">
+                                <span class="exclusive-tag">Recommended</span>
+                                <h2> Love Spell-Victoria’s Secret</h2>
+                                <p>Body Spray</p>
+                                <div class="price">
+                                    <span>Starting At</span>
+                                    <span class="amount">₱1,320.00</span>
+                                </div>
+                                <div class="button-group">
+                                    <button class="order-btn" onclick="window.location.href='women.html#MMMM';">See Full Details</button>
+                                </div>
+                            </div>
+                            <div class="featured-image">
+                                <img src="Victoria’s Secret Love Spell – Victoria’s Secret.png" alt="Semi-expensive">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="featured-slide">
+                        <div class="featured-content">
+                            <div class="featured-text">
+                                <span class="exclusive-tag">Recommended</span>
+                                <h2>  Vanilla Milkshake-FRESH Scentlab </h2>
+                                <p>Body Spray</p>
+                                <div class="price">
+                                    <span>Starting At</span>
+                                    <span class="amount">₱139.00</span>
+                                </div>
+                                <div class="button-group">
+                                    <button class="order-btn" onclick="window.location.href='women.html#MMMM';">See Full Details</button>
+                                </div>
+                            </div>
+                            <div class="featured-image">
+                                <img src="Vanilla Milkshake - FRESH Scentlab.png" alt="Affordable">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+            <div class="scent-types-container">
+                <h1>Types of Scents</h1>
+
+                <!-- Women's Scents -->
+                <h2>Women's Scents</h2>
+                <div class="scent-type-section">
+                    <div class="scent-scroll-container">
+                        <button class="scroll-arrow left-arrow"><i class="fas fa-chevron-left"></i></button>
+                        <div class="scent-description">
+                            <button class="card" onclick="window.location.href='women.html#FS';">
+                                <div class="front-card fresh-clean"></div>
+                                <div class="back-card fresh-clean">
+                                    <h6>These perfumes are often romantic, soft, and classic. Floral scents are
+                                        associated with femininity, sweetness, and elegance.</h6>
+                                </div>
+                            </button>
+
+                            <button class="card" onclick="window.location.href='women.html#CC';">
+                                <div class="front-card citrus-scent"></div>
+                                <div class="back-card citrus-scent">
+                                    <h6>Bright, zesty, and invigorating, citrus fragrances are typically fresh and
+                                        uplifting.</h6>
+                                </div>
+                            </button>
+
+                            <button class="card" onclick="window.location.href='women.html#SFL';">
+                                <div class="front-card sweet-floral"></div>
+                                <div class="back-card sweet-floral">
+                                    <h6>Light and romantic, floral scents are one of the most traditional, feminine
+                                        profiles.</h6>
+                                </div>
+                            </button>
+
+                            <button class="card" onclick="window.location.href='women.html#SFS';">
+                                <div class="front-card sweet-fruity"></div>
+                                <div class="back-card sweet-fruity">
+                                    <h6>These are playful and juicy fragrances, often youthful and fresh, making them
+                                        feel light and sweet.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='women.html#WS';">
+                                <div class="front-card woody"></div>
+                                <div class="back-card woody">
+                                    <h6>Earthy and grounding, woody fragrances add depth and warmth to the scent
+                                        profile. Feminine woody scents tend to be subtle and smooth.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='women.html#FFS';">
+                                <div class="front-card fruity-floral">
+                                </div>
+                                <div class="back-card fruity-floral">
+                                    <h6>A blend of sweet fruits and delicate flowers, creating a vibrant and complex
+                                        scent profile.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='women.html#GS';">
+                                <div class="front-card gourmand"></div>
+                                <div class="back-card gourmand">
+                                    <h6>Sweet and edible, gourmand fragrances are rich and indulgent, often evoking
+                                        dessert-like qualities.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='women.html#OS';">
+                                <div class="front-card oriental"></div>
+                                <div class="back-card oriental">
+                                    <h6>These perfumes are warm, exotic, and sensual, often with a rich, complex, and
+                                        spicy feel. They are deeper and more opulent than the previous categories.</h6>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="scroll-arrow right-arrow"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Men's Scents -->
+                <h2>Men's Scents</h2>
+                <div class="scent-type-section">
+                    <div class="scent-scroll-container">
+                        <button class="scroll-arrow left-arrow"><i class="fas fa-chevron-left"></i></button>
+                        <div class="scent-description">
+                            <button class="card" onclick="window.location.href='men.html#MWS';">
+                                <div class="front-card mwoody"></div>
+                                <div class="back-card mwoody">
+                                    <h6>Earthy, warm, and grounding, like walking through a forest or smelling fresh-cut
+                                        wood.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MSS';">
+                                <div class="front-card mspicy"></div>
+                                <div class="back-card mspicy">
+                                    <h6>Warm, invigorating, and bold, with a kick of heat and aromatic depth.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MCS';">
+                                <div class="front-card mcitrus"></div>
+                                <div class="back-card mcitrus">
+                                    <h6> Bright, zesty, and refreshing, like freshly peeled fruit or a cool morning
+                                        breeze. </h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MLS';">
+                                <div class="front-card mleather"></div>
+                                <div class="back-card mleather">
+                                    <h6> Rich, luxurious, and sometimes smoky, evoking the scent of well-worn leather.
+                                    </h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MAF';">
+                                <div class="front-card maquatic"></div>
+                                <div class="back-card maquatic">
+                                    <h6>Crisp, clean, and refreshing, like the ocean breeze or a cool splash of water.
+                                    </h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MTS';">
+                                <div class="front-card mtobacco"></div>
+                                <div class="back-card mtobacco">
+                                    <h6>Warm, smoky, and sweet, like a fine cigar or pipe tobacco in a cozy room.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MHF';">
+                                <div class="front-card mherbal"></div>
+                                <div class="back-card mherbal">
+                                    <h6>Fresh, natural, and aromatic, like walking through a garden or herb-filled
+                                        meadow.</h6>
+                                </div>
+                            </button>
+                            <button class="card" onclick="window.location.href='men.html#MGS';">
+                                <div class="front-card mgourmand"></div>
+                                <div class="back-card mgourmand">
+                                    <h6>Warm, sweet, and comforting, often evoking the scent of delicious treats.</h6>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="scroll-arrow right-arrow"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Unisex Scents -->
+                <h2>Unisex</h2>
+                <div class="scent-type-section unisex-section">
+                    <div class="scent-scroll-container">
+                        <button class="scroll-arrow left-arrow"><i class="fas fa-chevron-left"></i></button>
+                        <div class="scent-description">
+                        <button class="card" onclick="window.location.href='unisex.html#UFCS';">
+                            <div class="front-card ufresh"></div>
+                            <div class="back-card ufresh">
+                                <h6> Crisp, refreshing, and invigorating, like a cool breeze or freshly washed linen.
+                                </h6>
+                            </div>
+                        </button>
+                        <button class="card" onclick="window.location.href='unisex.html#UWE';">
+                            <div class="front-card uwoody"></div>
+                            <div class="back-card uwoody">
+                                <h6>Warm, grounding, and natural, like walking through a forest or smelling fresh-cut
+                                    wood.</h6>
+                            </div>
+                        </button>
+                        <button class="card" onclick="window.location.href='unisex.html#UCZ';">
+                            <div class="front-card ucitrus"></div>
+                            <div class="back-card ucitrus">
+                                <h6> Bright, uplifting, and energizing, like freshly peeled fruit or a sunny morning.
+                                </h6>
+                            </div>
+                        </button>
+                        <button class="card" onclick="window.location.href='unisex.html#UPS';">
+                            <div class="front-card upowdery"></div>
+                            <div class="back-card upowdery">
+                                <h6>Soft, comforting, and cozy, like the scent of baby powder or clean skin. </h6>
+                            </div>
+                        </button>
+                        <button class="card" onclick="window.location.href='unisex.html#UHG';">
+                            <div class="front-card uherbal"></div>
+                            <div class="back-card uherbal">
+                                <h6> Fresh, natural, and aromatic, like walking through a garden or herb-filled meadow.
+                                </h6>
+                            </div>
+                        </button>
+                    </div>
+                    <button class="scroll-arrow right-arrow"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Customer Reviews Preview - Dynamic Carousel -->
+        <section class="reviews-preview">
+            <h2 class="reviews-title">What Our Customers Say</h2>
+            
+            <!-- Review Container -->
+            <div id="reviewContainer" class="review-container"></div>
+
+            <div class="carousel">
+                <div class="review-container">
+                    <!-- Reviews will be loaded dynamically from reviews.json -->
+                    <div class="review-slide loading-review">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Loading reviews...</p>
+                        <p class="reviewer-name">Please wait</p>
+                    </div>
+                </div>
+            </div>
+            <button class="view-all-reviews-btn" onclick="window.location.href='/reviews.html'">View All Reviews</button>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-container">
+              <div class="footer-section logo-section">
+                <img src="/logo.png" alt="ScentSense" class="footer-logo" />
+                <p class="tagline">Discover your signature scent</p>
+                <div class="social-links">
+                  <a href="https://web.facebook.com/profile.php?id=61573286617313" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="https://www.instagram.com/scentsense_perfume" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="mailto:scentsenseperfume@gmail.com" aria-label="Email">
+                    <i class="fab fa-google"></i>
+                  </a>
+                </div>
+              </div>
+      
+              <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="main.html">Home</a></li>
+                  <li><a href="reviews.html">Reviews</a></li>
+                  <li><a href="saved-scents.html">Saved Scents</a></li>
+                  <li><a href="about.html">About Us</a></li>
+                </ul>
+              </div>
+      
+              <div class="footer-section categories">
+                <h3>Shop By</h3>
+                <ul>
+                  <li><a href="shop.html?filter=men">Men's Fragrances</a></li>
+                  <li><a href="shop.html?filter=women">Women's Fragrances</a></li>
+                  <li><a href="shop.html?filter=unisex">Unisex Collections</a></li>
+                </ul>
+              </div>
+      
+              <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <div class="contact-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Dagonoy St. Singalong Malate Manila</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+63 906 286 1439</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>scentsenseperfume@gmail.com</span>
+                </div>
+      
+                <h3>Message Us</h3>
+                <form id="contactForm" class="message-form">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" placeholder="Name" required />
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" placeholder="Email" required />
+                  <label for="subject">Subject:</label>
+                  <input type="text" id="subject" name="subject" placeholder="Subject" required />
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" placeholder="Message" required></textarea>
+                  <button type="submit" id="sendBtn">Send</button>
+                  <div id="formStatus"></div>
+                </form>
+              </div>
+            </div>
+          </footer>
+
+          <div class="copyright" style="text-align: center; padding: 0.5rem 0; background-color: #1a202c">
+            &copy; 2025 ScentSense. All Rights Reserved.
+          </div>
+
+          <!-- Admin Login Modal -->
+          <div class="login-modal admin-login-modal" style="display: none;">
+            <div class="login-content">
+              <div class="login-left">
+                <h2><span class="gold-text">Admin</span> Login</h2>
+                <p class="welcome-text">Welcome back, Administrator!</p>
+                <form id="adminLoginForm" class="login-form">
+                  <div class="form-group">
+                    <label for="adminUsername">Username</label>
+                    <div class="input-container">
+                      <i class="fas fa-user"></i>
+                      <input type="text" id="adminUsername" name="adminUsername" placeholder="Enter admin username" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <div class="input-container">
+                      <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter admin password" required>
+                      <i class="fas fa-eye-slash admin-toggle-password"></i>
+                    </div>
+                  </div>
+                  <div class="form-options">
+                    <a href="#" class="back-to-user-login">Back to User Login</a>
+                  </div>
+                  <button type="submit" class="login-btn">Continue</button>
+                </form>
+              </div>
+              <div class="login-right">
+                <img src="/login.avif" alt="Admin Login Banner">
+              </div>
+            </div>
+          </div>
+
+          <script>
+            // Admin login functionality
+            function showAdminLogin() {
+                document.querySelector('.login-modal').style.display = 'none';
+                document.querySelector('.admin-login-modal').style.display = 'flex';
+            }
+        
+            document.querySelector('.back-to-user-login').addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector('.admin-login-modal').style.display = 'none';
+                document.querySelector('.login-modal').style.display = 'flex';
+            });
+        
+            document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = document.getElementById('adminUsername').value;
+                const password = document.getElementById('adminPassword').value;
+        
+                // Check credentials directly (since we're not using a server for now)
+                if (username === 'Scentsense' && password === 'scentsenseproject') {
+                    // Set both storage types for better persistence
+                    localStorage.setItem('adminToken', 'admin-token');
+                    sessionStorage.setItem('isAdmin', 'true');
+                    // Open admin dashboard in new tab
+                    window.open('admin-dashboard.html', '_blank');
+                    // Close the admin login modal
+                    document.querySelector('.admin-login-modal').style.display = 'none';
+                    document.querySelector('.login-modal').style.display = 'none';
+                } else {
+                    alert('Invalid admin credentials');
+                }
+            });
+        
+            // Toggle password visibility for admin login
+            document.querySelector('.admin-toggle-password').addEventListener('click', function() {
+                const passwordInput = document.getElementById('adminPassword');
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                } else {
+                    passwordInput.type = 'password';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                }
+            });
+            // Add click handlers for order buttons
+    document.querySelectorAll('.order-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productName = this.getAttribute('data-product-name');
+            const price = parseFloat(this.getAttribute('data-product-price'));
+            const url = this.getAttribute('data-product-url');
+            
+            // Save order data
+            saveOrder(productName, price);
+            
+            // Open product URL in new tab
+            window.open(url, '_blank');
+        });
+    });
+        </script>
+    </body>
+</html>

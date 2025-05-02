@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Scents - ScentSense</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="/script.js" defer></script>
+  <script src="/loading.js"></script>
+  <script src="/product-details.js" defer></script>
+  <script src="/filter.js" defer></script>
+  <script src="/filter-search.js" defer></script>
+  <script src="/order-tracking.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("qOivU1JDmGtB6D-Ik"); 
+  </script>
+</head>
+
+<body>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <a href="/Main.html">
+          <img src="/logo.png" alt="ScentSense" class="logo">
+        </a>
+        <h1>ScentSense</h1>
+      </div>
+      <nav class="header-nav">
+        <ul class="menu">
+          <li><a href="/Main.html" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+          <li class="menu-item-with-submenu">
+            <span class="menu-link has-submenu"><i class="fas fa-cart-shopping"></i><span>Shop</span></span>
+            <ul class="submenu">
+              <li><a href="/unisex.html"><i class="fas fa-user-friends"></i><span>Unisex</span></a></li>
+              <li><a href="/men.html"><i class="fas fa-male"></i><span>Men</span></a></li>
+              <li><a href="/women.html"><i class="fas fa-female"></i><span>Women</span></a></li>
+            </ul>
+          </li>
+          <li><a href="/reviews.html"><i class="fas fa-star"></i><span>Reviews</span></a></li>
+          <li><a href="/saved-scents.html" onclick="handleSavedScents()"><i class="fas fa-shopping-bag"></i><span>Save
+                Scents</span></a></li>
+          <li><a href="/about.html"><i class="fas fa-info-circle"></i><span>About Us</span></a></li>
+        </ul>
+      </nav>
+      <div class="account-container">
+        <div class="account-dropdown">
+          <button class="account-btn">
+            <i class="fas fa-user"></i>
+          </button>
+          <div class="dropdown-content" id="accountDropdownContent">
+            <button class="dropdown-btn sign-in-btn" onclick="showLoginModal()">Sign In</button>
+            <button class="dropdown-btn profile-btn" style="display:none;"
+              onclick="window.location.href='/customize_account.html'">Profile</button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Login Modal -->
+    <div class="login-modal">
+      <div class="login-content">
+        <div class="login-left">
+          <h2><span class="gold-text">Log</span> In</h2>
+          <p class="welcome-text">Welcome back! Please enter your details</p>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <i class="fas fa-eye-slash login-toggle-password"></i>
+              </div>
+            </div>
+            <div class="form-options">
+              <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+              </div>
+              <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+            <div class="divider">
+            </div>
+            <p class="signup-text">Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+          </form>
+        </div>
+        <div class="login-right">
+          <img src="/login.avif" alt="Perfume Banner">
+        </div>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div class="signup-modal">
+      <div class="signup-content">
+        <div class="signup-left">
+          <h2><span class="gold-text">Sign</span> <span class="white-text">Up</span></h2>
+          <p class="welcome-text">Create your account!</p>
+          <form id="signupForm">
+            <div class="form-group">
+              <label for="signupName">Name</label>
+              <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="signupName" name="signupName" placeholder="Enter your name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupEmail">Email</label>
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="signupEmail" name="signupEmail" placeholder="Enter your email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <div class="input-container">
+
+                <input type="password" id="signupPassword" name="signupPassword" placeholder="Create a password"
+                  required>
+                <i class="fas fa-eye-slash signup-toggle-password"></i>
+              </div>
+            </div>
+            <button type="submit" class="signup-btn">Sign Up</button>
+            <p class="login-text">Already have an account? <a href="#" class="login-link">Log in</a></p>
+          </form>
+        </div>
+        <div class="signup-right">
+          <img src="/login.avif" alt="Signup Banner">
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="filter-container">
+      <div class="filter-section">
+        <div class="filter-header">
+          <h3>Filter By:</h3>
+          <div class="filter-search">
+            <input type="text" id="filterSearchInput" placeholder="Search for scents..." />
+            <button type="submit" class="search-btn">Search</button>
+          </div>
+        </div>
+        <div class="filter-options">
+          <div class="filter-group">
+            <h4>Price Range:</h4>
+            <div class="filter-items">
+              <label><input type="checkbox" class="price-filter" value="Luxury"> Luxury</label>
+              <label><input type="checkbox" class="price-filter" value="Semi-expensive"> Semi-expensive</label>
+              <label><input type="checkbox" class="price-filter" value="Affordable"> Affordable</label>
+            </div>
+          </div>
+          <div class="filter-group">
+            <h4>Scent Type:</h4>
+            <div class="filter-items">
+              <label><input type="checkbox" class="type-filter" value="Oil-based"> Oil-based</label>
+              <label><input type="checkbox" class="type-filter" value="Eau de Parfum"> Eau de Parfum</label>
+              <label><input type="checkbox" class="type-filter" value="Eau de Toilette"> Eau de Toilette</label>
+              <label><input type="checkbox" class="type-filter" value="Body Spray"> Body Spray</label>
+            </div>
+          </div>
+          <button id="apply-filters" class="filter-button">Apply Filters</button>
+          <button id="clear-filters" class="filter-button clear">Clear Filters</button>
+        </div>
+      </div>
+    </div>
+
+    <h1>MEN'S SCENTS</h1>
+    <section id="MWS">
+      <h1>Woody Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+
+<div class="product-card">
+          <img src="../Bois d’Argent - Dior.png" alt="Luxury" />
+          <p>Dior</p>
+          <h4>Bois d'Argent</h4>
+          <button class="add-to-cart-btn" data-product-id="097">Full Details</button>
+    </div>
+        <div class="product-card">
+          <img src="1 MILLION ELIXIR GOLDEN OUD - Paco Robanne.png" alt="Semi-expensive" />
+          <p>Paco Robanne</p>
+          <h4>1 Million Elixir Golden Oud</h4>
+          <button class="add-to-cart-btn" data-product-id="098">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Premiere Luxe Oud - Avon.png" alt="Affordable" />
+          <p>Avon</p>
+          <h4>Premiere Luxe Oud</h4>
+          <button class="add-to-cart-btn" data-product-id="099">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Bois des Iles - Chanel.png" alt="Luxury" />
+          <p>Chanel</p>
+          <h4>Bois des Iles</h4>
+          <button class="add-to-cart-btn" data-product-id="100">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="EBONY WOOD - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Ebony Wood</h4>
+          <button class="add-to-cart-btn" data-product-id="101">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../WOODY OUD - ORIGINLAB.png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>WOODY OUD</h4>
+          <button class="add-to-cart-btn" data-product-id="102">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Encre Noire - Lalique.png" alt="Luxury" />
+          <p>Lalique</p>
+          <h4>Encre Noire</h4>
+          <button class="add-to-cart-btn" data-product-id="103">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Vetiver Pamplemousse - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Vetiver Pamplemousse</h4>
+          <button class="add-to-cart-btn" data-product-id="104">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../CELADON - Zen Zest.png" alt="Affordable" />
+          <p>Zen Zest</p>
+          <h4>CELADON</h4>
+          <button class="add-to-cart-btn" data-product-id="105">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Oud & Bergamot - Jo Malone.png" alt="Luxury" />
+          <p>Jo Malone</p>
+          <h4>Oud & Bergamot</h4>
+          <button class="add-to-cart-btn" data-product-id="106">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Woodlands - Bath & Body Works.png" alt="Semi-expensive" />
+          <p>Bath & Body Works</p>
+          <h4>Woodlands</h4>
+          <button class="add-to-cart-btn" data-product-id="107">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Memo Work_Play Woody - Memo Fashion.png" alt="Affordable" />
+          <p>Memo Fashion</p>
+          <h4>Work/Play</h4>
+          <button class="add-to-cart-btn" data-product-id="108">Full Details</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="MSS">
+      <h1>Spicy Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Spicebomb Extreme - Viktor & Rolf.png" alt="Luxury" />
+          <p>Viktor & Rolf</p>
+          <h4>Spicebomb Extreme</h4>
+          <button class="add-to-cart-btn" data-product-id="109">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Spicebomb Exrteme - Symmetry Lab Parfums.png" alt="Semi-expensive" />
+          <p>Symmetry Lab Parfums</p>
+          <h4>Spicebomb Extreme Vol.3</h4>
+          <button class="add-to-cart-btn" data-product-id="110">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="DYLAN BLUE VERSACE - ORIGINLAB.png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>Dylan Blue Versace</h4>
+          <button class="add-to-cart-btn" data-product-id="111">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Ambre Nuit - Dior.png" alt="Luxury" />
+          <p>Dior</p>
+          <h4>Ambre Nuit</h4>
+          <button class="add-to-cart-btn" data-product-id="112">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Moroccan Dream (LV DUPE) -  Dubai Shop Baliuag .png" alt="Semi-expensive" />
+          <p>Dubai Shop Baliuag</p>
+          <h4>Moroccan Dream (LV DUPE)</h4>
+          <button class="add-to-cart-btn" data-product-id="113">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Spicebomb Extreme Inspired - KellaStefan.png" alt="Affordable" />
+          <p>KellaStefan</p>
+          <h4>Spicebomb Extreme Inspired</h4>
+          <button class="add-to-cart-btn" data-product-id="114">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Poivre Samarcande - Hermès.png" alt="Luxury" />
+          <p>Hermès</p>
+          <h4>Poivre Samarcande</h4>
+          <button class="add-to-cart-btn" data-product-id="115">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Carolina Herrera Bad boy (Mini Bottle) - Nosewise Central.png" alt="Semi-expensive" />
+          <p>Nosewise Central</p>
+          <h4>Carolina Herrera Bad Boy (Mini Bottle)</h4>
+          <button class="add-to-cart-btn" data-product-id="116">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../DG THE ONE - Eaugenelao8.png" alt="Affordable" />
+          <p>Eaugenelao8</p>
+          <h4>DG THE ONE</h4>
+          <button class="add-to-cart-btn" data-product-id="117">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Spice & Wood _ Creed.png" alt="Luxury" />
+          <p>Creed</p>
+          <h4>Spice & Wood</h4>
+          <button class="add-to-cart-btn" data-product-id="118">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Mystic Spice - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Mystic Spice</h4>
+          <button class="add-to-cart-btn" data-product-id="119">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Spice Guy - Natasha.png" alt="Affordable" />
+          <p>Natasha</p>
+          <h4>Spice Guy</h4>
+          <button class="add-to-cart-btn" data-product-id="120">Full Details</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="MCS">
+      <h1> Citrus Scents </h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cologne Indelebile - Frederic Malle.png" alt="Luxury" />
+          <p>Frederic Malle</p>
+          <h4>Cologne Indelebile</h4>
+          <button class="add-to-cart-btn" data-product-id="121">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Le Citron Perfume - parfois.png" alt="Semi-expensive" />
+          <p>Parfois</p>
+          <h4>Le Citron Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="122">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../￼ECL@T POUR HOMME for him - ORIGINLAB.png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>￼ECL@T POUR HOMME for him</h4>
+          <button class="add-to-cart-btn" data-product-id="123">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cedrat Enivrant - Atelier Cologne.png" alt="Luxury" />
+          <p>Atelier Cologne</p>
+          <h4>Cedrat Enivrant</h4>
+          <button class="add-to-cart-btn" data-product-id="124">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Citrus Supreme - Symmetry Lab.png" alt="Semi-expensive" />
+          <p>Symmetry Lab</p>
+          <h4>Citrus Supreme</h4>
+          <button class="add-to-cart-btn" data-product-id="125">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../F16 Crisp Citrus - Aficionado.png" alt="Affordable" />
+          <p>Aficionado</p>
+          <h4>F16 Crisp Citrus</h4>
+          <button class="add-to-cart-btn" data-product-id="126">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Eau Sauvage - Dior.png" alt="Luxury" />
+          <p>Dior</p>
+          <h4>Eau Sauvage</h4>
+          <button class="add-to-cart-btn" data-product-id="127">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Lemon Pie - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Lemon Pie</h4>
+          <button class="add-to-cart-btn" data-product-id="128">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Triumph - Luxe Fragrances.png" alt="Affordable" />
+          <p>Luxe Fragrances</p>
+          <h4>Triumph</h4>
+          <button class="add-to-cart-btn" data-product-id="129">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Bergamote Soleil - Atelier Cologne.png" alt="Luxury" />
+          <p>Atelier Cologne</p>
+          <h4>Bergamote Soleil</h4>
+          <button class="add-to-cart-btn" data-product-id="130">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Fresh Lemon Sugar - Body Fantasies.png" alt="Affordable" />
+          <p>Body Fantasies</p>
+          <h4>Fresh Lemon Sugar</h4>
+          <button class="add-to-cart-btn" data-product-id="131">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Lemon Burst - Avon.png" alt="Semi-expensive" />
+          <p>Avon</p>
+          <h4>Lemon Burst</h4>
+          <button class="add-to-cart-btn" data-product-id="132">Full Details</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="MLS">
+      <h1>Leather Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cuir de Russie - Chanel.png" alt="Luxury" />
+          <p>Chanel</p>
+          <h4>Cuir de Russie</h4>
+          <button class="add-to-cart-btn" data-product-id="133">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Oud Vibrant Leather - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Oud Vibrant Leather</h4>
+          <button class="add-to-cart-btn" data-product-id="134">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../TUSCAN LeATHER - ORIGINLAB.png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>TUSCAN LEATHER</h4>
+          <button class="add-to-cart-btn" data-product-id="135">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cuir de Lancôme - Lancôme.png" alt="Luxury" />
+          <p>Lancôme</p>
+          <h4>Cuir de Lancôme</h4>
+          <button class="add-to-cart-btn" data-product-id="136">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Vibrant Leather (Mini Bottle) - Zara.png" alt="Affordable" />
+          <p>Zara</p>
+          <h4>Vibrant Leather</h4>
+          <button class="add-to-cart-btn" data-product-id="137">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Versace Eros - Aficionado.png" alt="Semi-expensive" />
+          <p>Aficionado</p>
+          <h4>Versace Eros</h4>
+          <button class="add-to-cart-btn" data-product-id="138">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cuir d’Ange - Hermès.png" alt="Luxury" />
+          <p>Hermès</p>
+          <h4>Cuir d’Ange</h4>
+          <button class="add-to-cart-btn" data-product-id="139">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Intense Vibrant Leather - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Intense Vibrant Leather</h4>
+          <button class="add-to-cart-btn" data-product-id="140">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Black Essential Leather - Avon.png" alt="Affordable" />
+          <p>Avon</p>
+          <h4> Black Suede Essential</h4>
+          <button class="add-to-cart-btn" data-product-id="141">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Cuir Intense - Guerlain.png" alt="Luxury" />
+          <p>Guerlain</p>
+          <h4>Cuir Intense</h4>
+          <button class="add-to-cart-btn" data-product-id="142">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Graphite - Bath & Body Works.png" alt="Semi-expensive" />
+          <p>Bath & Body Works</p>
+          <h4>Graphite</h4>
+          <button class="add-to-cart-btn" data-product-id="143">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../TCS TF Ombre Leather Inspired Perfume.png" alt="Affordable" />
+          <p>TheScentsCo</p>
+          <h4>TCS TF Ombre Leather Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="144">Full Details</button>
+        </div>
+      </div>
+    </section>
+    <section id="MAF">
+      <h1>Aquatic Scents</h1>
+      <h2>Oil-based</h2>
+
+      <div class="products">
+        <div class="product-card">
+          <img src="../Acqua di Gio Profumo - Giorgio Armani.png" alt="Luxury" />
+          <p>Giorgio Armani</p>
+          <h4>Acqua di Gio Profumo</h4>
+          <button class="add-to-cart-btn" data-product-id="145">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Bold Extreme - Lumier Ethereal.png" alt="Semi-expensive" />
+          <p>Lumier Ethereal</p>
+          <h4>Bold Extreme</h4>
+          <button class="add-to-cart-btn" data-product-id="146">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="AQUA MaRINE Inspired Perfume - ORIGINLAB.png" alt="Affordable" />
+          <p> ORIGINLAB</p>
+          <h4>AQUA MaRINE Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="147">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Maison Margiela Sailing Day - Maison Margiela.png" alt="Luxury" />
+          <p>Maison Margiela</p>
+          <h4>Sailing Day</h4>
+          <button class="add-to-cart-btn" data-product-id="148">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Sel d’Azur - Yves Rocher.png" alt="Semi-expensive" />
+          <p>Yves Rocher</p>
+          <h4>Sel d’Azur</h4>
+          <button class="add-to-cart-btn" data-product-id="149">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Aqua Di Gio - Scent Society.png" alt="Affordable" />
+          <p>Scent Society</p>
+          <h4>Aqua Di Gio</h4>
+          <button class="add-to-cart-btn" data-product-id="150">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Issey Miyake L’Eau d’Issey Pour Homme - Issey Miyake.png" alt="Luxury" />
+          <p>Issey Miyake</p>
+          <h4>L’Eau d’Issey Pour Homme</h4>
+          <button class="add-to-cart-btn" data-product-id="151">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Seoul Summer - Zara..png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Seoul Summer</h4>
+          <button class="add-to-cart-btn" data-product-id="152">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Aquatic Mint Aqua Blue - OXYGEN .png" alt="Affordable" />
+          <p>OXYGEN</p>
+          <h4>Aquatic Mint Aqua Blue</h4>
+          <button class="add-to-cart-btn" data-product-id="153">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Maison Margiela Beach Walk - Maison Margiela.png" alt="Luxury" />
+          <p>Maison Margiela</p>
+          <h4>Beach Walk</h4>
+          <button class="add-to-cart-btn" data-product-id="154">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Aqua Spice - Aficionado.png" alt="Semi-expensive" />
+          <p>Aficionado</p>
+          <h4>Aqua Spice F55</h4>
+          <button class="add-to-cart-btn" data-product-id="155">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Into the Blue - MEMO.png" alt="Affordable" />
+          <p>MEMO</p>
+          <h4>Into the Blue</h4>
+          <button class="add-to-cart-btn" data-product-id="156">Full Details</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="MTS">
+      <h1>Tobacco Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Herod - Parfums de Marly.png" alt="Luxury" />
+          <p>Parfums de Marly</p>
+          <h4>Herod</h4>
+          <button class="add-to-cart-btn" data-product-id="157">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Tobacco Sublime - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Tobacco Sublime</h4>
+          <button class="add-to-cart-btn" data-product-id="158">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../COD Tobacco Vanille - ORIGINLAB .png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>COD Tobacco Vanille</h4>
+          <button class="add-to-cart-btn" data-product-id="159">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Ambre Tabac - Daniel Josie.png" alt="Luxury" />
+          <p>Daniel Josie</p>
+          <h4>Ambre Tabac</h4>
+          <button class="add-to-cart-btn" data-product-id="160">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../TOBACCO COLLECTION INTENSE DARK EXCLUSIVE - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Tobacco Collection Intense Dark Exclusive</h4>
+          <button class="add-to-cart-btn" data-product-id="161">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Red Tobacco Mancera Inspired Perfume - Superdose .png" alt="Affordable" />
+          <p>Superdose</p>
+          <h4>Red Tobacco Mancera Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="162">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Tobacco Leather - Memo Paris.png" alt="Luxury" />
+          <p>Memo Paris</p>
+          <h4>African Leather</h4>
+          <button class="add-to-cart-btn" data-product-id="163"> Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Blue Spirit Summer - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4> Blue Spirit Summer</h4>
+          <button class="add-to-cart-btn" data-product-id="164">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Naxos Tobacco Honey Inspired Perfume - Kella Stefan.png" alt="Affordable" />
+          <p>Kella Stefan</p>
+          <h4>Naxos Tobacco Honey Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="165">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Tobacco Vanille - Tom Ford.png" alt="Luxury" />
+          <p>Tom Ford</p>
+          <h4>Tobacco Vanille</h4>
+          <button class="add-to-cart-btn" data-product-id="166">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Tobacco Rich_Warm_Addictive- Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Tobacco Rich/Warm/Addictive</h4>
+          <button class="add-to-cart-btn" data-product-id="167">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Tobacco Bourbon - Vinta Aldternative Market.png" alt="Affordable" />
+          <p>Vinta Alternative Market</p>
+          <h4>Tobacco Bourbon</h4>
+          <button class="add-to-cart-btn" data-product-id="168">Full Details</button>
+        </div>
+      </div>
+    </section>
+    <section id="MHF">
+      <h1>Herbal Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Scent of Peace for Him - Bond No. 9.png" alt="Luxury" />
+          <p>Bond No. 9</p>
+          <h4>Scent of Peace for Him</h4>
+          <button class="add-to-cart-btn" data-product-id="169">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Green Savage - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Green Savage</h4>
+          <button class="add-to-cart-btn" data-product-id="170">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../GREEN IRISH TWEED Inspired Perfume - ORIGINLAB .png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>GREEN IRISH TWEED Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="171">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Sauvage Elixir - Dior.png" alt="Luxury" />
+          <p>Dior</p>
+          <h4>Sauvage Elixir</h4>
+          <button class="add-to-cart-btn" data-product-id="172">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Eternity - Calvin Klein.png" alt="Semi-expensive" />
+          <p>Calvin Klein</p>
+          <h4>Eternity</h4>
+          <button class="add-to-cart-btn" data-product-id="173">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../WHITE LAUNDRY Inspired Perfume - Scent Swatch.png" alt="Affordable" />
+          <p>Scent Swatch</p>
+          <h4>WHITE LAUNDRY Inspired Perfume</h4>
+          <button class="add-to-cart-btn" data-product-id="174">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="Just Different - Hugo Boss.png" alt="Luxury" />
+          <p>HUGO BOSS</p>
+          <h4>Just Different</h4>
+          <button class="add-to-cart-btn" data-product-id="175">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Explorer - Regatta .png" alt="Semi-expensive" />
+          <p>Regatta</p>
+          <h4>Explorer</h4>
+          <button class="add-to-cart-btn" data-product-id="176"> Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Heracles - Feralde.png" alt="Affordable" />
+          <p>Feralde</p>
+          <h4>Heracles</h4>
+          <button class="add-to-cart-btn" data-product-id="177"> Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Vetiver Tonka - Hermès.png" alt="Luxury" />
+          <p>Hermès</p>
+          <h4>Vetiver Tonka</h4>
+          <button class="add-to-cart-btn" data-product-id="178">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Explorer - Montblanc.png" alt="Semi-expensive" />
+          <p>Montblanc</p>
+          <h4>Explorer</h4>
+          <button class="add-to-cart-btn" data-product-id="179">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Axe Ice Chill.png" alt="Affordable" />
+          <p>Axe</p>
+          <h4>Ice Chill</h4>
+          <button class="add-to-cart-btn" data-product-id="180">Full Details</button>
+        </div>
+      </div>
+    </section>
+    <section id="MGS">
+      <h1>Gourmand Scents</h1>
+      <h2>Oil-based</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Tonka Imperiale - Guerlain.png" alt="Luxury" />
+          <p>Guerlain</p>
+          <h4>Tonka Imperiale</h4>
+          <button class="add-to-cart-btn" data-product-id="181">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="Clinique Happy.png" alt="Semi-expensive" />
+          <p>Clinique</p>
+          <h4>Happy</h4>
+          <button class="add-to-cart-btn" data-product-id="182">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../VANILLA & ANISE - ORIGINLAB .png" alt="Affordable" />
+          <p>ORIGINLAB</p>
+          <h4>VANILLA & ANISE</h4>
+          <button class="add-to-cart-btn" data-product-id="183">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Parfum (EDP)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Ambre Nuit - Dior.png" alt="Luxury" />
+          <p>Dior</p>
+          <h4>Ambre Nuit</h4>
+          <button class="add-to-cart-btn" data-product-id="184">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Rose Gourmand - Zara.png" alt="Semi-expensive" />
+          <p>Zara</p>
+          <h4>Rose Gourmand</h4>
+          <button class="add-to-cart-btn" data-product-id="185">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Sweet Honesty Bloom - Avon.png" alt="Affordable" />
+          <p>Avon</p>
+          <h4>Sweet Honesty Classic</h4>
+          <button class="add-to-cart-btn" data-product-id="186">Full Details</button>
+        </div>
+      </div>
+      <h2>Eau de Toilette (EDT)</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Tonka Cola - Mancera.png" alt="Luxury" />
+          <p>Mancera</p>
+          <h4>Tonka Cola</h4>
+          <button class="add-to-cart-btn" data-product-id="187">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Eau des Baux - L_Occitane.png" alt="Semi-expensive" />
+          <p>L'Occitane</p>
+          <h4>Eau des Baux</h4>
+          <button class="add-to-cart-btn" data-product-id="188">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="M - Intense Cafe Inspired.png" alt="Affordable" />
+          <p>M Intense Cafe Inspired</p>
+          <h4>The Good Wick</h4>
+          <button class="add-to-cart-btn" data-product-id="189">Full Details</button>
+        </div>
+      </div>
+      <h2>Body Spray</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="../Angel Muse - Mugler.png" alt="Luxury" />
+          <p>Mugler</p>
+          <h4>Angel Muse</h4>
+          <button class="add-to-cart-btn" data-product-id="190">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../After Dark - Bath & Body Works.png" alt="Semi-expensive" />
+          <p>Bath & Body Works</p>
+          <h4>After Dark</h4>
+          <button class="add-to-cart-btn" data-product-id="191">Full Details</button>
+        </div>
+        <div class="product-card">
+          <img src="../Dark Temptation - Axe.png" alt="Affordable" />
+          <p>Axe</p>
+          <h4>Dark Temptation</h4>
+          <button class="add-to-cart-btn" data-product-id="192">Full Details</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section logo-section">
+          <img src="/logo.png" alt="ScentSense" class="footer-logo" />
+          <p class="tagline">Discover your signature scent</p>
+          <div class="social-links">
+            <a href="https://web.facebook.com/profile.php?id=61573286617313" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/scentsense_perfume" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="mailto:scentsenseperfume@gmail.com" aria-label="Email">
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="saved-scents.html">Saved Scents</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section categories">
+          <h3>Shop By</h3>
+          <ul>
+            <li><a href="shop.html?filter=men">Men's Fragrances</a></li>
+            <li><a href="shop.html?filter=women">Women's Fragrances</a></li>
+            <li><a href="shop.html?filter=unisex">Unisex Collections</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dagonoy St. Singalong Malate Manila</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+63 906 286 1439</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>scentsenseperfume@gmail.com</span>
+          </div>
+
+          <h3>Message Us</h3>
+          <form id="contactForm" class="message-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Name" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required />
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required />
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Message" required></textarea>
+            <button type="submit" id="sendBtn">Send</button>
+            <div id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright" style="text-align: center; padding: 1rem 0; background-color: #1a202c">
+      &copy; 2025 ScentSense. All Rights Reserved.
+    </div>
+  </div>
+</body>
+
+<!-- Product Modal - Will be populated dynamically by JavaScript -->
+<div id="productModal" class="modal"></div>
+<script>
+  // Add click handlers for order buttons
+  document.querySelectorAll('.order-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const productName = this.getAttribute('data-product-name');
+      const price = parseFloat(this.getAttribute('data-product-price'));
+      const url = this.getAttribute('data-product-url');
+
+      // Save order data
+      saveOrder(productName, price);
+
+      // Open product URL in new tab
+      window.open(url, '_blank');
+    });
+  });
+</script>
+
+</html>
